@@ -25,10 +25,10 @@ services:
       - "443:443"
     environment:
       # Pass DOCKER_HOST to container to allow it to connect to daemon on host
-      DOCKER_HOST: ${DOCKER_HOST}
+      # DOCKER_HOST: ${DOCKER_HOST}
       # Locations of TLS certificate and key needed to auth with daemon on host
-      DOCKER_TLS_CERT: "/etc/docker/server.pem"
-      DOCKER_TLS_KEY: "/etc/docker/server-key.pem"
+      # DOCKER_TLS_CERT: "/etc/docker/server.pem"
+      # DOCKER_TLS_KEY: "/etc/docker/server-key.pem"
       # All containers will join this network
       DOCKER_NETWORK_NAME: ${DOCKER_NETWORK_NAME}
       # JupyterHub will spawn this Notebook image for users
