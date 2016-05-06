@@ -41,8 +41,8 @@ c.DockerSpawner.extra_create_kwargs.update({ 'volume_driver': 'local' })
 c.DockerSpawner.remove_containers = True
 # Specify paths to TLS certificate and key used to authenticate to Docker
 # daemon at DOCKER_HOST
-c.DockerSpawner.tls_cert = os.environ['DOCKER_TLS_CERT']
-c.DockerSpawner.tls_key = os.environ['DOCKER_TLS_KEY']
+# c.DockerSpawner.tls_cert = os.environ['DOCKER_TLS_CERT']
+# c.DockerSpawner.tls_key = os.environ['DOCKER_TLS_KEY']
 # For debugging arguments passed to spawned containers
 c.DockerSpawner.debug = True
 
