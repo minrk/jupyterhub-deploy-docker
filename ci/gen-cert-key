@@ -1,0 +1,11 @@
+#!/bin/sh
+# make a new self-signed SSL key, certificate for testing
+here=$(dirname $0)
+root="$here/.."
+secrets="$here/../secrets"
+mkdir -p "$secrets"
+
+openssl req -x509 -nodes -days 365 -newkey rsa:1024 \
+    -keyout "$secrets/jupyterhub.key" \
+    -out "$secrets/jupyterhub.cer" \
+    -subj "/C=US/ST=Main/O=jupyter/CN=127.0.0.1"

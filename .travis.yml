@@ -1,0 +1,24 @@
+sudo: required
+language: python
+python:
+  - 3.5
+services:
+  - docker
+before_script:
+  - echo 'GITHUB_CLIENT_ID=fake' >> .env
+  - echo 'GITHUB_CLIENT_SECRET=alsofake' >> .env
+  - echo 'OAUTH_CALLBACK_URL=http://example.com/oauth_callback' >> .env
+  - source .env
+  - env
+  - mkdir -p secrets
+  - ./ci/gen-cert-key
+  - echo -e 'jupyterhub admin\njupyter\n' > secrets/userlist
+  - docker pull $DOCKER_NOTEBOOK_IMAGE
+install:
+  - pip install -r ci/requirements.txt
+script:
+  - docker network create $DOCKER_NETWORK_NAME
+  - docker volume create $DOCKER_VOLUME_NAME
+  - docker-compose build
+  - docker-compose up -d
+  - python ci/test.py
