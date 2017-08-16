@@ -6,13 +6,10 @@ FROM jupyterhub/jupyterhub-onbuild:0.7.2
 RUN /opt/conda/bin/conda install psycopg2=2.7 && \
     /opt/conda/bin/conda clean -tipsy && \
     /opt/conda/bin/pip install \
-    oauthenticator==0.5.* \
+    oauthenticator==0.6.* \
     dockerspawner==0.7.*
 
-# install docker on the jupyterhub container
-RUN wget https://get.docker.com -q -O /tmp/getdocker && \
-    chmod +x /tmp/getdocker && \
-    sh /tmp/getdocker
+RUN pip install https://github.com/yuvipanda/jupyterhub-firstuseauthenticator/archive/master.zip
 
 # Copy TLS certificate and key
 ENV SSL_CERT /srv/jupyterhub/secrets/jupyterhub.crt

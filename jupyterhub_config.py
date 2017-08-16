@@ -55,6 +55,7 @@ c.JupyterHub.ssl_cert = os.environ['SSL_CERT']
 c.JupyterHub.authenticator_class = 'oauthenticator.GitHubOAuthenticator'
 c.GitHubOAuthenticator.oauth_callback_url = os.environ['OAUTH_CALLBACK_URL']
 
+c.JupyterHub.authenticator_class = 'firstuseauthenticator.FirstUseAuthenticator'
 # Persist hub data on volume mounted inside container
 data_dir = os.environ.get('DATA_VOLUME_CONTAINER', '/data')
 
